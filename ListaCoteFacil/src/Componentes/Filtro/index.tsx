@@ -1,3 +1,6 @@
+import { EstiloTituloFormulario } from "../../Estilos/formulario";
+import { EstiloSelecao } from "../../Estilos/Selecao";
+
 interface FiltroProps {
     filtro: string;
     setFiltro: React.Dispatch<React.SetStateAction<string>>;
@@ -8,14 +11,14 @@ interface FiltroProps {
   const Filtro = ({ filtro, setFiltro, setOrdem }: FiltroProps) => {
     return (
       <div className="filtro">
-        <h2>Filtrar tarefas</h2>
+        <EstiloTituloFormulario>Filtrar tarefas</EstiloTituloFormulario>
         <div className="filtro-opcoes">
           <p>Status</p>
-          <select value={filtro} onChange={(e) => setFiltro(e.target.value)}>
+          <EstiloSelecao value={filtro} onChange={(e) => setFiltro(e.target.value)}>
             <option value="All">Todas</option>
             <option value="Pendentes">Pendentes</option>
             <option value="Completas">Completas</option>
-          </select>
+          </EstiloSelecao>
         </div>
         <div>
           <p>Ordem Alfabética</p>

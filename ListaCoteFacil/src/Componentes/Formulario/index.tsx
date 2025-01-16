@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import '../../App.css';
 import { InterfaceTarefas } from '../../Interfaces/Tarefas';
-import { AppContainer, EstiloFormulario } from '../../Estilos/App';
+import { AppContainer,  } from '../../Estilos/App';
 import Buscador from '../Buscador';
 import Filtro from '../Filtro';
 import Tarefas from '../Tarefas';
 import GeradorDeTarefas from '../Tarefas/GeradorDeTArefas';
+import { EstiloFormulario, EstiloTituloFormulario } from '../../Estilos/formulario';
 
 function Formulario() {
   const [tarefas, setTarefas] = useState<InterfaceTarefas[]>([]);
@@ -50,10 +51,10 @@ function Formulario() {
   return (
     <AppContainer>
       <EstiloFormulario>
-        <h1>Lista de Tarefas</h1>
+        <EstiloTituloFormulario>Lista de Tarefas</EstiloTituloFormulario>
         <Buscador buscar={buscar} setBuscar={setBuscar}/>
         <Filtro filtro={filtro} setFiltro={setFiltro} ordem={ordem} setOrdem={setOrdem}/>
-        <div className="listaDeTarefas">
+        <div>
           {tarefas
             .filter ((tarefa)=> 
               filtro === "All" 

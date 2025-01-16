@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import { EstiloTituloFormulario } from '../../../Estilos/formulario';
+import {  } from '../../../Estilos/Botao';
+import { EstiloBotao } from '../../../Estilos/Botao';
+import { EstiloEntradaDeTexto } from '../../../Estilos/EntradaDeTexto';
+import { EstiloSelecao } from '../../../Estilos/Selecao';
 
 
 interface GeradorDeTarefasProps {
@@ -26,16 +31,16 @@ const GeradorDeTarefas: React.FC<GeradorDeTarefasProps> = ({ addTarefa }) => {
 
 
   return (
-    <div className="gerador-form">
-      <h2>Criar nova tarefa</h2>
+    <div>
+      <EstiloTituloFormulario>Criar nova tarefa</EstiloTituloFormulario>
       <form onSubmit={handleSubmit}>
-        <input 
+        <EstiloEntradaDeTexto 
           value={value}
           type="text" 
-          placeholder="Digite o título" 
+          placeholder="Digite o título da tarefa" 
           onChange={evento => setValue(evento.target.value)} 
         />
-        <select 
+        <EstiloSelecao
           value={categoria}
           onChange={evento => setCategoria(evento.target.value)}
         >
@@ -43,8 +48,8 @@ const GeradorDeTarefas: React.FC<GeradorDeTarefasProps> = ({ addTarefa }) => {
           <option value="Trabalho">Trabalho</option>
           <option value="Pessoal">Pessoal</option>
           <option value="Estudos">Estudo</option>
-        </select>
-        <button type="submit">Criar Tarefa</button>
+        </EstiloSelecao>
+        <EstiloBotao type="submit">Criar Tarefa</EstiloBotao>
       </form>
     </div>
   );

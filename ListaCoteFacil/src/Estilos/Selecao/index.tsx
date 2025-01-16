@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const EstiloEntradaDeTexto = styled.input`
-    width: 100%;
+export const EstiloSelecao = styled.select`
+  width: 100%;
     height: 50px;
     border: 1px solid rgba(220, 220, 220, 1);
     border-radius: 25px;
@@ -17,6 +17,6 @@ export const EstiloEntradaDeTexto = styled.input`
     padding: 0;
     box-sizing: border-box;
     border: none;
-}
+    }
 
-    `
+`

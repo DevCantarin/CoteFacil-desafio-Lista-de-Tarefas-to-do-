@@ -9,7 +9,10 @@ interface TarefasProps {
 
 const Tarefas: React.FC<TarefasProps> = ({ tarefa, removerTarefa, completarTarefa }) => {
   return (
-    <div className="tarefasCriadas" style={{textDecoration: tarefa.commpletada ? "line-through" : ""}}>
+    <div className="tarefasCriadas" style={{
+      textDecoration: tarefa.commpletada ? "line-through" : "",
+      color: tarefa.commpletada ? "black" : "inherit"
+    }}>
       <div className="cadaTarefa">
         <p>{tarefa.texto}</p>
         <p className="categoria">{tarefa.categoria}</p>

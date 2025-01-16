@@ -1,4 +1,6 @@
 import React from 'react';
+import { EstiloTituloFormulario } from '../../Estilos/formulario';
+import { EstiloEntradaDeTexto } from '../../Estilos/EntradaDeTexto';
 
 interface BuscadorProps {
   buscar: string;
@@ -8,8 +10,8 @@ interface BuscadorProps {
 const Buscador: React.FC<BuscadorProps> = ({ buscar, setBuscar }) => {
   return (
     <div className="buscador">
-      <h2>Buscar tarefa</h2>
-      <input
+      <EstiloTituloFormulario>Buscar tarefa</EstiloTituloFormulario>
+      <EstiloEntradaDeTexto
         value={buscar} 
         placeholder="Digite para pesquisar"
         type="text" 

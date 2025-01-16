@@ -10,15 +10,4 @@ export const AppContainer = styled.div`
     
 `;
 
-export const EstiloFormulario = styled.form`
-    width: 430px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
-    background: #fff;
-    text-align: center;
-    padding: 10px 60px;
-    display: flex
-;
-    flex-direction: column;
-    align-items: center;
-}
-`;
+
