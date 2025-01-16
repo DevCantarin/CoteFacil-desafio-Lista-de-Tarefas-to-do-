@@ -117,6 +117,7 @@ input, select {
   display: flex;
   justify-content: space-between;
   gap: 3rem;
+  color: black;
 }
 
 .filtro-opcoes div {

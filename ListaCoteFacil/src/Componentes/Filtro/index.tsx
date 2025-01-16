@@ -4,11 +4,9 @@ import { EstiloSelecao } from "../../Estilos/Selecao";
 interface FiltroProps {
     filtro: string;
     setFiltro: React.Dispatch<React.SetStateAction<string>>;
-    ordem?: string;
-    setOrdem: React.Dispatch<React.SetStateAction<string>>; 
   }
   
-  const Filtro = ({ filtro, setFiltro, setOrdem }: FiltroProps) => {
+  const Filtro = ({ filtro, setFiltro }: FiltroProps) => {
     return (
       <div className="filtro">
         <EstiloTituloFormulario>Filtrar tarefas</EstiloTituloFormulario>
@@ -22,8 +20,7 @@ interface FiltroProps {
         </div>
         <div>
           <p>Ordem Alfabética</p>
-          <button onClick={() => setOrdem("Ascendente")}>Ascendente</button>
-          <button onClick={() => setOrdem("Descendente")}>Descendente</button>
+
         </div>
       </div>
     );

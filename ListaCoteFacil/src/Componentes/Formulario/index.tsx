@@ -12,7 +12,7 @@ function Formulario() {
   const [tarefas, setTarefas] = useState<InterfaceTarefas[]>([]);
   const [buscar, setBuscar] = useState("");
   const [filtro, setFiltro] = useState("All");
-  const [ordem, setOrdem] = useState("Asc");
+
 
 
   const criarTarefa = (tarefaTexto: string, tarefaCategoria: string) => {
@@ -53,8 +53,8 @@ function Formulario() {
       <EstiloFormulario>
         <EstiloTituloFormulario>Lista de Tarefas</EstiloTituloFormulario>
         <Buscador buscar={buscar} setBuscar={setBuscar}/>
-        <Filtro filtro={filtro} setFiltro={setFiltro} ordem={ordem} setOrdem={setOrdem}/>
-        <div>
+        <Filtro filtro={filtro} setFiltro={setFiltro}/>
+        <div className="listaDeTarefas">
           {tarefas
             .filter ((tarefa)=> 
               filtro === "All" 
@@ -63,9 +63,6 @@ function Formulario() {
                 ? !tarefa.commpletada 
                 : tarefa.commpletada)
                 .filter((tarefa) => tarefa.texto.toLowerCase().includes(buscar.toLowerCase()))
-                .sort((a, b) => ordem === "Asc" 
-                ? a.texto.localeCompare(b.texto) 
-                : b.texto.localeCompare(a.texto))
                 .map((tarefa) => (
                   <Tarefas
                   tarefa={tarefa}
