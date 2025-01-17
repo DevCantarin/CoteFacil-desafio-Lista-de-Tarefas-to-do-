@@ -18,10 +18,6 @@ interface FiltroProps {
             <option value="Completas">Completas</option>
           </EstiloSelecao>
         </div>
-        <div>
-          <p>Ordem Alfabética</p>
-
-        </div>
       </div>
     );
   };

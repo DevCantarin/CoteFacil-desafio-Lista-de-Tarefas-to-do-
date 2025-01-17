@@ -14,8 +14,8 @@ const Tarefas: React.FC<TarefasProps> = ({ tarefa, removerTarefa, completarTaref
       color: tarefa.commpletada ? "black" : "inherit"
     }}>
       <div className="cadaTarefa">
-        <p>{tarefa.texto}</p>
-        <p className="categoria">{tarefa.categoria}</p>
+        <p>{`Nome da tarefa: ${tarefa.texto}`}</p>
+        <p className="categoria">{`Categoria: ${tarefa.categoria}`}</p>
       </div>
       <div className="botoes">
         <button className='completar' onClick={() => completarTarefa(tarefa.id)}>{tarefa.commpletada ? "Desmarcar" : "Marcar"}</button>

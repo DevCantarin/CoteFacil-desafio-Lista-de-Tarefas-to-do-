@@ -7,6 +7,7 @@ import Filtro from '../Filtro';
 import Tarefas from '../Tarefas';
 import GeradorDeTarefas from '../Tarefas/GeradorDeTArefas';
 import { EstiloFormulario, EstiloTituloFormulario } from '../../Estilos/formulario';
+import IncluirTarefaLocalStorage from '../../Servicos/ServicoLocalStorege';
 
 function Formulario() {
   const [tarefas, setTarefas] = useState<InterfaceTarefas[]>([]);
@@ -31,6 +32,7 @@ function Formulario() {
         commpletada: false,
       },
     ]);
+
   };
 
   const excluirTarefa = (id: number) => {
@@ -46,6 +48,7 @@ function Formulario() {
     const novotarefas = [...tarefas];
     novotarefas.map((tarefa) => tarefa.id===id ? tarefa.commpletada = !tarefa.commpletada : tarefa);
     setTarefas(novotarefas);
+    IncluirTarefaLocalStorage(novotarefas);
   };
 
   return (
