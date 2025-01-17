@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../../App.css';
 import { InterfaceTarefas } from '../../Interfaces/Tarefas';
 import { AppContainer,  } from '../../Estilos/App';
@@ -21,9 +21,8 @@ function Formulario() {
       alert("NÃO É POSSIVEL ADICIONAR UMA TAREFA SEM TEXTO OU CATEGORIA");
       return;
     } 
-      
-
-    setTarefas([
+    
+    const novasTarefas = [
       ...tarefas,
       {
         id: tarefas.length + 1,
@@ -31,7 +30,10 @@ function Formulario() {
         categoria: tarefaCategoria,
         commpletada: false,
       },
-    ]);
+    ];
+
+    IncluirTarefaLocalStorage(novasTarefas);
+    setTarefas( novasTarefas);
 
   };
 
@@ -41,6 +43,7 @@ function Formulario() {
       tarefa.id !== id? tarefa: null
     
     );
+    IncluirTarefaLocalStorage(tarefasFiltrados);
     setTarefas(tarefasFiltrados);
   };
 
@@ -50,6 +53,16 @@ function Formulario() {
     setTarefas(novotarefas);
     IncluirTarefaLocalStorage(novotarefas);
   };
+
+const TarefasLocalStorage = () => {
+    const tarefas = localStorage.getItem("tarefas");
+    const tarefasDoLocalStorage = tarefas ? JSON.parse(tarefas) : [];
+    return tarefasDoLocalStorage;
+};
+
+  useEffect(() => {
+    setTarefas(TarefasLocalStorage());
+  }, []);
 
   return (
     <AppContainer>
