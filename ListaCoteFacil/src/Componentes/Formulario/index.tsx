@@ -1,97 +1,80 @@
-import { useState, useEffect } from 'react';
-import '../../App.css';
-import { InterfaceTarefas } from '../../Interfaces/Tarefas';
-import { AppContainer,  } from '../../Estilos/App';
-import Buscador from '../Buscador';
-import Filtro from '../Filtro';
-import Tarefas from '../Tarefas';
-import GeradorDeTarefas from '../Tarefas/GeradorDeTArefas';
-import { EstiloFormulario, EstiloTituloFormulario } from '../../Estilos/formulario';
-import IncluirTarefaLocalStorage from '../../Servicos/ServicoLocalStorege';
+import { useState, useEffect } from "react";
+import "../../App.css";
+import { InterfaceTarefas } from "../../Interfaces/Tarefas";
+import { AppContainer } from "../../Estilos/App";
+import Buscador from "../Buscador";
+import Filtro from "../Filtro";
+import Tarefas from "../Tarefas";
+import GeradorDeTarefas from "../Tarefas/GeradorDeTArefas";
+import {
+  EstiloFormulario,
+  EstiloTituloFormulario,
+} from "../../Estilos/formulario";
+import {
+  CompletarTarefa,
+  CriarTarefa,
+  ExcluirTarefa,
+  TarefasLocalStorage,
+} from "../../Servicos/Taregas";
 
 function Formulario() {
-  const [tarefas, setTarefas] = useState<InterfaceTarefas[]>([]);
+  const [tarefas, setTarefas] = useState<InterfaceTarefas[]>(TarefasLocalStorage());
   const [buscar, setBuscar] = useState("");
   const [filtro, setFiltro] = useState("All");
 
 
-
-  const criarTarefa = (tarefaTexto: string, tarefaCategoria: string) => {
-    if (tarefaTexto.trim() === "" || tarefaCategoria.trim() === ""){
-      alert("NÃO É POSSIVEL ADICIONAR UMA TAREFA SEM TEXTO OU CATEGORIA");
-      return;
-    } 
-    
-    const novasTarefas = [
-      ...tarefas,
-      {
-        id: tarefas.length + 1,
-        texto: tarefaTexto,
-        categoria: tarefaCategoria,
-        commpletada: false,
-      },
-    ];
-
-    IncluirTarefaLocalStorage(novasTarefas);
-    setTarefas( novasTarefas);
-
-  };
-
-  const excluirTarefa = (id: number) => {
-    const novotarefas = [...tarefas];
-    const tarefasFiltrados = novotarefas.filter((tarefa) => 
-      tarefa.id !== id? tarefa: null
-    
-    );
-    IncluirTarefaLocalStorage(tarefasFiltrados);
-    setTarefas(tarefasFiltrados);
-  };
-
-  const completarTarefa = (id: number) => {
-    const novotarefas = [...tarefas];
-    novotarefas.map((tarefa) => tarefa.id===id ? tarefa.commpletada = !tarefa.commpletada : tarefa);
-    setTarefas(novotarefas);
-    IncluirTarefaLocalStorage(novotarefas);
-  };
-
-const TarefasLocalStorage = () => {
-    const tarefas = localStorage.getItem("tarefas");
-    const tarefasDoLocalStorage = tarefas ? JSON.parse(tarefas) : [];
-    return tarefasDoLocalStorage;
-};
-
   useEffect(() => {
-    setTarefas(TarefasLocalStorage());
-  }, []);
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  }, [tarefas]);
+
+
+  const handleCriarTarefa = (tarefaTexto: string, tarefaCategoria: string) => {
+    const novasTarefas = CriarTarefa(tarefaTexto, tarefaCategoria, tarefas);
+    setTarefas(novasTarefas);
+  };
+
+  const handleExcluirTarefa = (id: number) => {
+    const tarefasAtualizadas = ExcluirTarefa(id, tarefas);
+    setTarefas(tarefasAtualizadas);
+  };
+
+  const handleCompletarTarefa = (id: number) => {
+    const tarefasAtualizadas = CompletarTarefa(id, tarefas);
+    setTarefas(tarefasAtualizadas);
+  };
 
   return (
     <AppContainer>
       <EstiloFormulario>
         <EstiloTituloFormulario>Lista de Tarefas</EstiloTituloFormulario>
-        <Buscador buscar={buscar} setBuscar={setBuscar}/>
-        <Filtro filtro={filtro} setFiltro={setFiltro}/>
+        <Buscador buscar={buscar} setBuscar={setBuscar} />
+        <Filtro filtro={filtro} setFiltro={setFiltro} />
         <div className="listaDeTarefas">
-          {tarefas
-            .filter ((tarefa)=> 
-              filtro === "All" 
-                ? true 
-                : filtro === "Pendentes" 
-                ? !tarefa.commpletada 
-                : tarefa.commpletada)
-                .filter((tarefa) => tarefa.texto.toLowerCase().includes(buscar.toLowerCase()))
-                .map((tarefa) => (
-                  <Tarefas
+          {tarefas &&
+            tarefas
+              .filter((tarefa) =>
+                filtro === "All"
+                  ? true
+                  : filtro === "Pendentes"
+                  ? !tarefa.commpletada
+                  : tarefa.commpletada
+              )
+              .filter((tarefa) =>
+                tarefa.texto.toLowerCase().includes(buscar.toLowerCase())
+              )
+              .map((tarefa, index) => (
+                <Tarefas
                   tarefa={tarefa}
-                  removerTarefa={excluirTarefa}
-                completarTarefa={completarTarefa}
-                key={tarefa.id}
-              />
-            ))
-          }
+                  removerTarefa={handleExcluirTarefa}
+                  completarTarefa={handleCompletarTarefa}
+                  key={index}
+                />
+              ))}
         </div>
-        <GeradorDeTarefas addTarefa={criarTarefa} />
+        <GeradorDeTarefas addTarefa={handleCriarTarefa} />
       </EstiloFormulario>
-      </AppContainer>
+    </AppContainer>
   );
 }
+
 export default Formulario;
