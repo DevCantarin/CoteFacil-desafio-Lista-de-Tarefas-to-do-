@@ -14,10 +14,9 @@ export const TarefasLocalStorage = (): InterfaceTarefas[] => {
 
 export const CriarTarefa = (
   tarefaTexto: string,
-  tarefaCategoria: string,
   tarefas: InterfaceTarefas[]
 ): InterfaceTarefas[] => {
-  if (tarefaTexto.trim() === "" || tarefaCategoria.trim() === "") {
+  if (tarefaTexto.trim() === "") {
     alert("NÃO É POSSIVEL ADICIONAR UMA TAREFA SEM TEXTO OU CATEGORIA");
     return tarefas;
   }
@@ -27,7 +26,6 @@ export const CriarTarefa = (
     {
       id: tarefas.length + 1,
       texto: tarefaTexto,
-      categoria: tarefaCategoria,
       commpletada: false,
     },
   ];

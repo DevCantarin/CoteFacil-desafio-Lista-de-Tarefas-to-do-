@@ -28,8 +28,8 @@ function Formulario() {
   }, [tarefas]);
 
 
-  const handleCriarTarefa = (tarefaTexto: string, tarefaCategoria: string) => {
-    const novasTarefas = CriarTarefa(tarefaTexto, tarefaCategoria, tarefas);
+  const handleCriarTarefa = (tarefaTexto: string) => {
+    const novasTarefas = CriarTarefa(tarefaTexto,  tarefas);
     setTarefas(novasTarefas);
   };
 
