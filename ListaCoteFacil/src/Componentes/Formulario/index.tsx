@@ -13,6 +13,7 @@ import {
 import {
   CompletarTarefa,
   CriarTarefa,
+  EditarTarefa,
   ExcluirTarefa,
   TarefasLocalStorage,
 } from "../../Servicos/Taregas";
@@ -43,6 +44,11 @@ function Formulario() {
     setTarefas(tarefasAtualizadas);
   };
 
+  const handleEditarTarefa = (id: number, novoTexto: string) => {
+    const tarefasAtualizadas = EditarTarefa(id, novoTexto, tarefas);
+    setTarefas(tarefasAtualizadas);
+  };
+
   return (
     <AppContainer>
       <EstiloFormulario>
@@ -65,6 +71,7 @@ function Formulario() {
               .map((tarefa, index) => (
                 <Tarefas
                   tarefa={tarefa}
+                  editarTarefa={handleEditarTarefa}
                   removerTarefa={handleExcluirTarefa}
                   completarTarefa={handleCompletarTarefa}
                   key={index}

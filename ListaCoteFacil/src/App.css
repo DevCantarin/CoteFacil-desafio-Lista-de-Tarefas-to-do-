@@ -26,6 +26,8 @@ input {
   box-sizing: border-box;
 }
 
+
+
 button {
   background-color: #333974;
   color: white;
@@ -60,7 +62,17 @@ input, select {
   margin: 5px;
 }
 
+.salvar{
+  BACKGROUND-COLOR: #5CB85C;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
 .excluir{ 
+  BACKGROUND-COLOR: #D9534F;
+}
+
+.cancelar{ 
   BACKGROUND-COLOR: #D9534F;
 }
 

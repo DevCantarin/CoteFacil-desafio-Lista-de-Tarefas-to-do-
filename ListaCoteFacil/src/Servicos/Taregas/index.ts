@@ -34,6 +34,20 @@ export const CriarTarefa = (
   return novasTarefas;
 };
 
+export const EditarTarefa = (
+  id: number,
+  novoTexto: string,
+  tarefas: InterfaceTarefas[]
+): InterfaceTarefas[] => {
+  const tarefasAtualizadas = tarefas.map((tarefa) =>
+    tarefa.id === id ? { ...tarefa, texto: novoTexto } : tarefa
+  );
+
+  IncluirTarefaLocalStorage(tarefasAtualizadas);
+  return tarefasAtualizadas;
+};
+
+
 export const ExcluirTarefa = (
   id: number,
   tarefas: InterfaceTarefas[]
