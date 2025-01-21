@@ -1,10 +1,30 @@
 <h1>Lista de Tarefas - ListaCoteFacil</h1>
 
-Descrição do Projeto
+<h2> Descrição do Projeto </h2>
 
 O projeto Lista de Tarefas é uma aplicação React que permite aos usuários criar, visualizar, filtrar, buscar, completar e excluir tarefas. Ele utiliza TypeScript para tipagem estática, styled-components para estilização, e localStorage para persistência de dados no navegador.
 
+<h2> 
+Tags
+</h2> 
+
+React
+
+TypeScript
+
+Vite
+
+Styled-Components
+
+LocalStorage
+
+Gerenciamento de Estado
+
+<h2>
+  
 Funcionalidades
+</h2>
+
 
 Criar Tarefa: Adiciona uma nova tarefa à lista.
 
@@ -18,9 +38,17 @@ Buscar Tarefa: Permite buscar tarefas pelo texto.
 
 Persistência de Dados: Os dados das tarefas são salvos no localStorage e restaurados automaticamente ao recarregar a página.
 
-Estrutura do Projeto
 
+<h2>
+  
+Estrutura do Projeto
+</h2>
+
+
+<h3>
+  
 Principais Componentes
+</h3>
 
 Formulario: Componente principal que organiza a aplicação.
 
@@ -36,7 +64,12 @@ Tarefas: Renderiza cada tarefa individualmente, com opções para completar ou e
 
 GeradorDeTarefas: Formulário para adicionar novas tarefas.
 
+
+<h2>
 Principais Serviços
+  
+</h2>
+
 
 Os serviços estão localizados no diretório ../../Servicos/Taregas:
 
@@ -58,7 +91,11 @@ EstiloFormulario: Estilização do formulário principal.
 
 EstiloTituloFormulario: Título da aplicação.
 
+
+<h2>
+  
 Dependências
+</h2>
 
 As principais dependências do projeto incluem:
 
@@ -70,7 +107,11 @@ styled-components: Biblioteca para estilização com CSS-in-JS.
 
 Vite: Ferramenta de build para desenvolvimento rápido.
 
+
+<h2>
+  
 Scripts Disponíveis
+</h2>
 
 dev: Inicia o servidor de desenvolvimento.
 
@@ -82,7 +123,11 @@ preview: Visualiza o build de produção.
 
 Configuração do Projeto
 
+
+<h2>
+  
 Instalação
+</h2>
 
 Clone o repositório:
 
@@ -104,9 +149,16 @@ npm run dev
 
 Acesse a aplicação no navegador pelo endereço exibido (geralmente http://localhost:5173).
 
-Estrutura do Estado
 
+<h2>
+  
+Estrutura do Estado
+</h2>
+
+<h3>
 Estados Gerenciados
+  
+</h3>
 
 tarefas: Array de tarefas com a interface InterfaceTarefas. As tarefas são recuperadas do localStorage no início.
 
@@ -122,7 +174,11 @@ interface InterfaceTarefas {
   completada: boolean;
 }
 
+
+<h2>
+  
 Fluxo de Dados
+</h2>
 
 Adicionar Tarefa: Através do GeradorDeTarefas, chama-se o serviço CriarTarefa, que atualiza o estado tarefas.
 
@@ -132,18 +188,15 @@ Buscar Tarefas: O estado buscar filtra as tarefas pelo texto.
 
 Completar/Excluir Tarefa: As funções CompletarTarefa e ExcluirTarefa atualizam o estado tarefas, refletindo as mudanças.
 
-Contribuição
+<h2>
+  
+Status do Projeto
+</h2>
 
-Crie uma branch para sua feature/bugfix:
+O projeto está em desenvolvimento ativo, com os seguintes status:
 
-git checkout -b minha-feature
+Funcionalidades principais implementadas.
 
-Faça commit de suas mudanças:
+Testes e melhorias contínuas em andamento.
 
-git commit -m "Descrição da mudança"
-
-Envie as mudanças para o repositório remoto:
-
-git push origin minha-feature
-
-Abra um Pull Request na branch principal do projeto.
+Sugestões e contribuições são bem-vindas.
